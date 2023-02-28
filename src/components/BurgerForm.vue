@@ -62,8 +62,11 @@ export default {
       nome: null,
       paes: null,
       carnes: null,
-      opcionais: null,
       opcionaisData: null,
+      pao: null,
+      carne: null,
+      opcionais: [],
+      status: "Solicitado"
     };
   },
   methods: {
