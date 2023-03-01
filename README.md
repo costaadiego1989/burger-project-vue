@@ -10,6 +10,12 @@ npm install
 npm run serve
 ```
 
+
+### Para o projeto rodar e necessário rodar o JSON-SERVER que simula uma fake api
+```
+npm run backen
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
