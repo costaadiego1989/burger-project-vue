@@ -77,5 +77,31 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nome": "Juliana Colonia",
+      "carne": "Maminha",
+      "pao": "Integral",
+      "opcionais": [
+        "Cheddar",
+        "Tomate",
+        "Pepino",
+        "Bacon",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 1
+    },
+    {
+      "nome": "Joaquim",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Solicitado",
+      "id": 2
+    }
+  ]
 }

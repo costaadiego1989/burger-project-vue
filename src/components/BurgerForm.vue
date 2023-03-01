@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Message :msg="msg" v-show="msg" />
     <form id="burger-form" @submit="cadastrarBurger($event)">
       <div class="input-container">
         <label for="nome">Nome do cliente:</label>
@@ -54,7 +55,9 @@
   </div>
 </template>
   
-  <script>
+<script>
+import Message from "./Message.vue";
+
 export default {
   name: "BurgerForm",
   data() {
@@ -66,7 +69,8 @@ export default {
       pao: null,
       carne: null,
       opcionais: [],
-      status: "Solicitado"
+      msg: "",
+      status: "Solicitado",
     };
   },
   methods: {
@@ -85,32 +89,41 @@ export default {
       }
     },
     async cadastrarBurger(ev) {
-        ev.preventDefault();
-        
-        const data = {
-            nome: this.nome,
-            carne: this.carne,
-            pao: this.pao,
-            opcionais: Array.from(this.opcionais),
-            status: this.status
-        }
+      ev.preventDefault();
 
-        const dataJSon = JSON.stringify(data);
+      const data = {
+        nome: this.nome,
+        carne: this.carne,
+        pao: this.pao,
+        opcionais: Array.from(this.opcionais),
+        status: this.status,
+      };
 
-        const req = await fetch("http://localhost:3000/burgers", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: dataJSon
-        });
+      const dataJSon = JSON.stringify(data);
 
-        const res = await req.json()
+      const req = await fetch("http://localhost:3000/burgers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: dataJSon,
+      });
 
-        console.log(res);
-    }
+      const res = await req.json();
+
+      this.msg = `Pedido Nº ${res.id} realizado com sucesso.`;
+      setTimeout(() => { this.msg = "" }, 2500);
+      
+      this.nome = "";
+      this.pao = "";
+      this.carne = "";
+      this.opcionais = "";
+    },
   },
   mounted() {
     this.getIngredientes();
   },
+  components: {
+    Message
+  }
 };
 </script>
   
