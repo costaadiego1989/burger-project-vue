@@ -45,15 +45,19 @@
     </div>
   </div>
 </template>
-  <script>
+
+<script>
+import Message from "./Message.vue";
+
 export default {
   name: "Dashboard",
   data() {
     return {
-        burgers: [],
-        status: null,
-    }
+      burgers: [],
+      status: null,
+    };
   },
+
   methods: {
     async getBurgers() {
       try {
@@ -68,6 +72,7 @@ export default {
         console.error(error);
       }
     },
+
     async getStatus() {
       try {
         const req = await fetch("http://localhost:3000/status");
@@ -80,20 +85,41 @@ export default {
     },
 
     async deleteBurger(id) {
-        const req = await fetch(`http://localhost:3000/burgers/${id}`, {
-            method: "DELETE",
+      try {
+        await fetch(`http://localhost:3000/burgers/${id}`, {
+          method: "DELETE",
         });
 
         this.getBurgers();
-    }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async updateBurger(event, id) {
+      const data = event.target.value;
+      const dataJson = JSON.stringify({ status: data });
+      try {
+        const res = await fetch(`http://localhost:3000/burgers/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: dataJson,
+        });
+
+        await res.json();
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
+
   mounted() {
     this.getBurgers();
   },
 };
 </script>
   
-  <style scoped>
+<style scoped>
 #burger-table {
   max-width: 1200px;
   margin: 0 auto;
@@ -145,7 +171,7 @@ select {
 }
 
 .actions {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 </style>
