@@ -1,6 +1,6 @@
 <template>
   <div id="main-container">
-    <h2>Página de Pedidos</h2>
+    <h2>Pedidos Realizados</h2>
     <Dashboard />
   </div>
 </template>
@@ -17,4 +17,10 @@ export default {
 </script>
 
 <style scoped>
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 2rem;
+  }
 </style>

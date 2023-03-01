@@ -79,20 +79,6 @@
   ],
   "burgers": [
     {
-      "nome": "Juliana Colonia",
-      "carne": "Maminha",
-      "pao": "Integral",
-      "opcionais": [
-        "Cheddar",
-        "Tomate",
-        "Pepino",
-        "Bacon",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
       "nome": "Joaquim",
       "carne": "Alcatra",
       "pao": "3 Queijos",
@@ -102,6 +88,18 @@
       ],
       "status": "Solicitado",
       "id": 2
+    },
+    {
+      "nome": "Juliana Colonia",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Cebola roxa",
+        "Tomate",
+        "Bacon"
+      ],
+      "status": "Solicitado",
+      "id": 3
     }
   ]
 }
