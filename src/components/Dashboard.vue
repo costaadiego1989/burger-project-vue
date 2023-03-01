@@ -1,5 +1,6 @@
 <template>
   <div id="burger-table">
+    <Message :msg="msg" v-show="msg" />
     <div>
       <div id="burger-table-heading">
         <div class="order-id">#:</div>
@@ -51,10 +52,16 @@ import Message from "./Message.vue";
 
 export default {
   name: "Dashboard",
+
+  components: {
+    Message,
+  },
+
   data() {
     return {
       burgers: [],
       status: null,
+      msg: null,
     };
   },
 
@@ -107,6 +114,8 @@ export default {
         });
 
         await res.json();
+        this.msg = `Status do pedido Nº ${id} aterado com sucesso.`;
+        setTimeout(() => { this.msg = "" }, 2500);
       } catch (error) {
         console.error(error);
       }
